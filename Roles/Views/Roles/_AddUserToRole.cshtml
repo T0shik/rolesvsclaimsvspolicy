@@ -1,0 +1,42 @@
+﻿@model Roles.Controllers.UpdateUserRoleViewModel
+
+@{
+}
+
+<div>
+    <form asp-controller="Roles" asp-action="UpdateUserRole" method="post">
+        <h2>Add User to Role</h2>
+        <ul>
+            @foreach (var user in Model.Users)
+            {
+                <li>
+                    <input type="radio" asp-for="UserEmail" value="@user.Email" />
+                    @user.Email
+                </li>
+                <li>
+                    <ul>
+                        @foreach (var role in user.Roles)
+                        {
+                            <li>
+                                @role.Name
+                            </li>
+                        }
+                    </ul>
+                </li>
+            }
+        </ul>
+        <h4>Roles to add</h4>
+        <ul>
+            @foreach (var role in Model.Roles)
+            {
+                <li>
+                    <input type="radio" asp-for="Role" value="@role" />
+                    @role
+                </li>
+            }
+        </ul>
+        <input type="submit" value="Add Role" />
+        <input type="hidden" asp-for="Delete" value="false" id="delete" />
+        <input type="submit" value="Delete Role" onclick="document.getElementById('delete').value = 'true'" />
+    </form>
+</div>

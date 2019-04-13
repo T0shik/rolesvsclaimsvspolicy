@@ -1,0 +1,13 @@
+﻿<h1>Index</h1>
+
+
+<h3>User Claims</h3>
+<ul>
+    @foreach (var claim in User.Claims)
+    {
+        <li>@claim.Type - @claim.Value</li>
+    }
+</ul>
+<a asp-controller="Policy" asp-action="TwoYearRewards">Two Years</a> <br />
+<a asp-controller="Policy" asp-action="FiveYearRewards">Five Years</a> <br />
+<a asp-controller="Policy" asp-action="TenYearRewards">Ten Years</a>

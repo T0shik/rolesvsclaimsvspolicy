@@ -1,0 +1,31 @@
+﻿@model Roles.Controllers.DisplayViewModel
+
+@{ }
+
+<div>
+    <h2>Create User</h2>
+    <div>
+        <form asp-controller="Roles" asp-action="CreateUser" method="post">
+            <label>User Email</label>
+            <input name="email" value="" />
+            <input type="submit" value="Create User" />
+        </form>
+    </div>
+</div>
+<div>
+    <div>
+        <h2>Role List</h2>
+        <ul>
+            @foreach (var role in Model.Roles)
+            {
+                <li>
+                    @role
+                </li>
+            }
+        </ul>
+    </div>
+    <partial name="_CreateRole" model="new Roles.Controllers.RoleViewModel()">
+</div>
+<div>
+    <partial name="_AddUserToRole" model="new Roles.Controllers.UpdateUserRoleViewModel() { Users = Model.Users, Roles = Model.Roles }">
+</div>
